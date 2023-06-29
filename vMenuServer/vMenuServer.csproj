@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net481</TargetFramework>
+    <DebugType>embedded</DebugType>
+    <Configurations>Release;Debug</Configurations>
+    <AssemblyName>vMenuServer.net</AssemblyName>
+    <TargetName>$(AssemblyName)</TargetName>
+    <OutputPath>..\..\build\</OutputPath>
+    <DefineConstants>SERVER</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedClasses\ConfigManager.cs" Link="ConfigManager.cs" />
+    <Compile Include="..\SharedClasses\PermissionsManager.cs" Link="PermissionsManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    
+    <PackageReference Include="CitizenFX.Core.Server" Version="1.0.6302">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dependencies\shared\Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config\addons.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="config\locations.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="config\permissions.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="storage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="System.Numerics.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
